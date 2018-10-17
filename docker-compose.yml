@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  rabbitmq:
+    image: rabbit-ssl
+    ports:
+      - "5671:5671"
+      - "15671:15671"
+      - "8443:8443"
+      - "61614:61614"
