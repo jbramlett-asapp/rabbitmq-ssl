@@ -3,13 +3,13 @@ ARG DEPLOYMENT
 LABEL "Deployment"="$DEPLOYMENT"
 
 
-ADD ./certs /etc/certs/
-COPY config/rabbitmq.config /etc/rabbitmq/rabbitmq.config
+ADD ./certs /etc/ssl/certs/
+ADD config/rabbitmq.config /etc/rabbitmq/rabbitmq.config
 
-RUN chown rabbitmq:rabbitmq /etc/certs \
-	&& chown rabbitmq:rabbitmq /etc/certs/* \
-	&& chmod 700 /etc/certs \
-	&& chmod 600 /etc/certs/*
+RUN chown rabbitmq:rabbitmq /etc/ssl/certs \
+	&& chown rabbitmq:rabbitmq /etc/ssl/certs/* \
+	&& chmod 710 /etc/ssl/certs \
+	&& chmod 610 /etc/ssl/certs/*
 
 
 RUN rabbitmq-plugins enable --offline rabbitmq_mqtt rabbitmq_federation_management rabbitmq_stomp
