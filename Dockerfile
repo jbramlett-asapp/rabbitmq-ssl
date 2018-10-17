@@ -1,10 +1,7 @@
-FROM rabbitmq:3.7.7-management
+FROM rabbitmq:3.7.7-management-alpine
 ARG DEPLOYMENT
 LABEL "Deployment"="$DEPLOYMENT"
 
-
-RUN apt-get update \
-	&& apt-get install openssl -y
 
 ADD ./certs /etc/certs/
 COPY config/rabbitmq.config /etc/rabbitmq/rabbitmq.config
